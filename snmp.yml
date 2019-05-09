@@ -1,3 +1,4 @@
+# WARNING: This file was auto-generated using snmp_exporter generator, manual changes will be lost.
 rfc1628_ups:
   walk:
   - 1.3.6.1.2.1.2
@@ -5,7 +6,10 @@ rfc1628_ups:
   - 1.3.6.1.2.1.33.1.2
   - 1.3.6.1.2.1.33.1.3
   - 1.3.6.1.2.1.33.1.4
+  - 1.3.6.1.2.1.33.1.5
+  - 1.3.6.1.2.1.33.1.6
   - 1.3.6.1.2.1.33.1.7
+  - 1.3.6.1.2.1.33.1.8
   - 1.3.6.1.2.1.33.1.9
   get:
   - 1.3.6.1.2.1.1.3.0
@@ -823,6 +827,60 @@ rfc1628_ups:
     indexes:
     - labelname: upsOutputLineIndex
       type: gauge
+  - name: upsBypassFrequency
+    oid: 1.3.6.1.2.1.33.1.5.1
+    type: gauge
+    help: The present bypass frequency. - 1.3.6.1.2.1.33.1.5.1
+  - name: upsBypassNumLines
+    oid: 1.3.6.1.2.1.33.1.5.2
+    type: gauge
+    help: The number of bypass lines utilized in this device - 1.3.6.1.2.1.33.1.5.2
+  - name: upsBypassLineIndex
+    oid: 1.3.6.1.2.1.33.1.5.3.1.1
+    type: gauge
+    help: The bypass line identifier. - 1.3.6.1.2.1.33.1.5.3.1.1
+    indexes:
+    - labelname: upsBypassLineIndex
+      type: gauge
+  - name: upsBypassVoltage
+    oid: 1.3.6.1.2.1.33.1.5.3.1.2
+    type: gauge
+    help: The present bypass voltage. - 1.3.6.1.2.1.33.1.5.3.1.2
+    indexes:
+    - labelname: upsBypassLineIndex
+      type: gauge
+  - name: upsBypassCurrent
+    oid: 1.3.6.1.2.1.33.1.5.3.1.3
+    type: gauge
+    help: The present bypass current. - 1.3.6.1.2.1.33.1.5.3.1.3
+    indexes:
+    - labelname: upsBypassLineIndex
+      type: gauge
+  - name: upsBypassPower
+    oid: 1.3.6.1.2.1.33.1.5.3.1.4
+    type: gauge
+    help: The present true power conveyed by the bypass. - 1.3.6.1.2.1.33.1.5.3.1.4
+    indexes:
+    - labelname: upsBypassLineIndex
+      type: gauge
+  - name: upsAlarmsPresent
+    oid: 1.3.6.1.2.1.33.1.6.1
+    type: gauge
+    help: The present number of active alarm conditions. - 1.3.6.1.2.1.33.1.6.1
+  - name: upsAlarmId
+    oid: 1.3.6.1.2.1.33.1.6.2.1.1
+    type: gauge
+    help: A unique identifier for an alarm condition - 1.3.6.1.2.1.33.1.6.2.1.1
+    indexes:
+    - labelname: upsAlarmId
+      type: gauge
+  - name: upsAlarmTime
+    oid: 1.3.6.1.2.1.33.1.6.2.1.3
+    type: gauge
+    help: The value of sysUpTime when the alarm condition was detected - 1.3.6.1.2.1.33.1.6.2.1.3
+    indexes:
+    - labelname: upsAlarmId
+      type: gauge
   - name: upsTestSpinLock
     oid: 1.3.6.1.2.1.33.1.7.2
     type: gauge
@@ -852,6 +910,44 @@ rfc1628_ups:
     type: gauge
     help: The amount of time, in TimeTicks, since the test in progress was initiated,
       or, if no test is in progress, the previous test took to complete - 1.3.6.1.2.1.33.1.7.6
+  - name: upsShutdownType
+    oid: 1.3.6.1.2.1.33.1.8.1
+    type: gauge
+    help: This object determines the nature of the action to be taken at the time
+      when the countdown of the upsShutdownAfterDelay and upsRebootWithDuration objects
+      reaches zero - 1.3.6.1.2.1.33.1.8.1
+    enum_values:
+      1: output
+      2: system
+  - name: upsShutdownAfterDelay
+    oid: 1.3.6.1.2.1.33.1.8.2
+    type: gauge
+    help: Setting this object will shutdown (i.e., turn off) either the UPS output
+      or the UPS system (as determined by the value of upsShutdownType at the time
+      of shutdown) after the indicated number of seconds, or less if the UPS batteries
+      become depleted - 1.3.6.1.2.1.33.1.8.2
+  - name: upsStartupAfterDelay
+    oid: 1.3.6.1.2.1.33.1.8.3
+    type: gauge
+    help: Setting this object will start the output after the indicated number of
+      seconds, including starting the UPS, if necessary - 1.3.6.1.2.1.33.1.8.3
+  - name: upsRebootWithDuration
+    oid: 1.3.6.1.2.1.33.1.8.4
+    type: gauge
+    help: Setting this object will immediately shutdown (i.e., turn off) either the
+      UPS output or the UPS system (as determined by the value of upsShutdownType
+      at the time of shutdown) for a period equal to the indicated number of seconds,
+      after which time the output will be started, including starting the UPS, if
+      necessary - 1.3.6.1.2.1.33.1.8.4
+  - name: upsAutoRestart
+    oid: 1.3.6.1.2.1.33.1.8.5
+    type: gauge
+    help: Setting this object to 'on' will cause the UPS system to restart after a
+      shutdown if the shutdown occurred during a power loss as a result of either
+      a upsShutdownAfterDelay or an internal battery depleted condition - 1.3.6.1.2.1.33.1.8.5
+    enum_values:
+      1: "on"
+      2: "off"
   - name: upsConfigInputVoltage
     oid: 1.3.6.1.2.1.33.1.9.1
     type: gauge
