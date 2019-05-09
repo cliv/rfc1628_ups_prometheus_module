@@ -1,4 +1,3 @@
-# WARNING: This file was auto-generated using snmp_exporter generator, manual changes will be lost.
 rfc1628_ups:
   walk:
   - 1.3.6.1.2.1.2
@@ -56,7 +55,7 @@ rfc1628_ups:
       labelname: ifIndex
   - name: ifType
     oid: 1.3.6.1.2.1.2.2.1.3
-    type: gauge
+    type: EnumAsInfo
     help: The type of interface - 1.3.6.1.2.1.2.2.1.3
     indexes:
     - labelname: ifIndex
@@ -689,7 +688,7 @@ rfc1628_ups:
       1.3.6.1.2.1.33.1.1.6
   - name: upsBatteryStatus
     oid: 1.3.6.1.2.1.33.1.2.1
-    type: gauge
+    type: EnumAsStateSet
     help: The indication of the capacity remaining in the UPS system's batteries -
       1.3.6.1.2.1.33.1.2.1
     enum_values:
@@ -772,7 +771,7 @@ rfc1628_ups:
       type: gauge
   - name: upsOutputSource
     oid: 1.3.6.1.2.1.33.1.4.1
-    type: gauge
+    type: EnumAsStateSet
     help: The present source of output power - 1.3.6.1.2.1.33.1.4.1
     enum_values:
       1: other
@@ -887,7 +886,7 @@ rfc1628_ups:
     help: A spin lock on the test subsystem - 1.3.6.1.2.1.33.1.7.2
   - name: upsTestResultsSummary
     oid: 1.3.6.1.2.1.33.1.7.3
-    type: gauge
+    type: EnumAsStateSet
     help: The results of the current or last UPS diagnostics test performed - 1.3.6.1.2.1.33.1.7.3
     enum_values:
       1: donePass
@@ -912,7 +911,7 @@ rfc1628_ups:
       or, if no test is in progress, the previous test took to complete - 1.3.6.1.2.1.33.1.7.6
   - name: upsShutdownType
     oid: 1.3.6.1.2.1.33.1.8.1
-    type: gauge
+    type: EnumAsStateSet
     help: This object determines the nature of the action to be taken at the time
       when the countdown of the upsShutdownAfterDelay and upsRebootWithDuration objects
       reaches zero - 1.3.6.1.2.1.33.1.8.1
@@ -941,7 +940,7 @@ rfc1628_ups:
       necessary - 1.3.6.1.2.1.33.1.8.4
   - name: upsAutoRestart
     oid: 1.3.6.1.2.1.33.1.8.5
-    type: gauge
+    type: EnumAsStateSet
     help: Setting this object to 'on' will cause the UPS system to restart after a
       shutdown if the shutdown occurred during a power loss as a result of either
       a upsShutdownAfterDelay or an internal battery depleted condition - 1.3.6.1.2.1.33.1.8.5
@@ -979,7 +978,7 @@ rfc1628_ups:
       is declared - 1.3.6.1.2.1.33.1.9.7
   - name: upsConfigAudibleStatus
     oid: 1.3.6.1.2.1.33.1.9.8
-    type: gauge
+    type: EnumAsStateSet
     help: The requested state of the audible alarm - 1.3.6.1.2.1.33.1.9.8
     enum_values:
       1: disabled
